@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApplicationHelpdeskDomain.Interfaces;
 using WebApplicationHelpdeskInfrastructure.Database.Seeders;
+using WebApplicationHelpdeskInfrastructure.Repository;
 
 namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
 {
@@ -26,6 +28,9 @@ namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
             services.AddScoped<UserHelpdeskSeeder>();
             services.AddScoped<RegisterForClientSeeder>();
             services.AddScoped<RegisterForHelpdeskSeeder>();
+            services.AddScoped<IRegisterClientRepository, RegisterForClientRepository>();
+            services.AddScoped<IRegisterHelpdeskoRepository, RegisterForHelpdeskRepository>();
+            services.AddScoped<IRegisterTicketRepository, RegisterTicketRepository>();
         }
     }
 }
