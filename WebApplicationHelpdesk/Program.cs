@@ -1,14 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using WebApplicationHelpdeskDomain.Entities.Ticket;
-using WebApplicationHelpdeskInfrastructure.Database;
 using WebApplicationHelpdeskInfrastructure.Database.Extensions;
 using WebApplicationHelpdeskInfrastructure.Database.Seeders;
+using WebApplicationHelpdeskApi.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
