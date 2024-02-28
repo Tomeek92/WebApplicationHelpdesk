@@ -1,4 +1,6 @@
-﻿using WebApplicationHelpdeskDomain.Entities.Register;
+﻿using AutoMapper;
+using WebApplicationHelpdeskDomain.Entities.Clients;
+using WebApplicationHelpdeskDomain.Entities.Register;
 using WebApplicationHelpdeskDomain.Interfaces;
 
 namespace WebApplicationHelpdeskApi.Service.ServiceRegisterClient
@@ -6,13 +8,17 @@ namespace WebApplicationHelpdeskApi.Service.ServiceRegisterClient
     public class RegisterClientService : IRegisterClientService
     {
         private readonly IRegisterClientRepository _context;
-        public RegisterClientService(IRegisterClientRepository context )
+        private readonly IMapper _mapper;
+        public RegisterClientService(IRegisterClientRepository context , IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public async Task Create(RegisterForClient registerForClient)
+        public async Task Create(ClientUserDto registerForClientDto)
         {
-           await _context.Create(registerForClient);
+          var registerClient = _mapper.Map<RegisterForClient>(registerForClientDto);
+
+           await _context.Create(registerClient);
         }
     }
 }

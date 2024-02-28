@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationHelpdeskApi;
 using WebApplicationHelpdeskApi.Service.ServiceRegisterClient;
 using WebApplicationHelpdeskDomain.Entities.Register;
 
@@ -17,7 +18,7 @@ namespace WebApplicationHelpdesk.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(RegisterForClient registerForClient)
+        public async Task<IActionResult> Create(ClientUserDto registerForClient)
         {
             await _registerClientService.Create(registerForClient);
             return View();

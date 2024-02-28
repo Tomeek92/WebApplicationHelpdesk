@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskApi.Service.ServiceRegisterClient;
 using WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk;
 using WebApplicationHelpdeskDomain.Entities.Register;
@@ -13,7 +14,7 @@ namespace WebApplicationHelpdesk.Controllers
             _registerClientService = registerHelpdeskService;
         }
         [HttpPost]
-        public async Task<IActionResult> Create(RegisterForHelpdesk registerForHelpdesk)
+        public async Task<IActionResult> Create(HelpdeskUserDto registerForHelpdesk)
         {
            await _registerClientService.Create(registerForHelpdesk);
             return View();

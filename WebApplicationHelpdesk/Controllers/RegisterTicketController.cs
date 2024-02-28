@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskApi.Service.ServiceTicketCreate;
 using WebApplicationHelpdeskDomain.Entities.Ticket;
 
@@ -12,7 +13,7 @@ namespace WebApplicationHelpdesk.Controllers
             _registerTicketService = registerTicketService;
         }
         [HttpPost]
-        public async Task<IActionResult> Create(TicketCreate ticketCreate)
+        public async Task<IActionResult> Create(TicketCreateDto ticketCreate)
         {
             await _registerTicketService.Create(ticketCreate);
             return View();

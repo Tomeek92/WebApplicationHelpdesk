@@ -1,9 +1,10 @@
-﻿using WebApplicationHelpdeskDomain.Entities.Register;
+﻿using WebApplicationHelpdeskApi.Dto;
+using WebApplicationHelpdeskDomain.Entities.Register;
 
 namespace WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk
 {
     public interface IRegisterHelpdeskService
     {
-        Task Create(RegisterForHelpdesk registerForHelpdesk);
+        Task Create(HelpdeskUserDto registerForHelpdesk);
     }
 }

@@ -12,12 +12,13 @@ namespace WebApplicationHelpdeskDomain.Entities.Clients
         [Key]
         public Guid Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [Required]
         public int PostCode { get; set; }
         [Required]
         public int Nip { get; set; }
+        
     }
 }

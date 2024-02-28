@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using WebApplicationHelpdeskApi.Mapper;
 using WebApplicationHelpdeskApi.Service.ServiceRegisterClient;
 using WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk;
 using WebApplicationHelpdeskApi.Service.ServiceTicketCreate;
@@ -13,6 +14,8 @@ namespace WebApplicationHelpdeskApi.Extension
             services.AddScoped<IRegisterClientService, RegisterClientService>();
             services.AddScoped<IRegisterHelpdeskService, RegisterHelpdeskService>();
             services.AddScoped<IRegisterTicketService,RegisterTicketService>();
+            services.AddAutoMapper(typeof(ClientCreateMappingProfile));
+            services.AddAutoMapper(typeof(HelpdeskCreateMappingProfile));
         }
     }
 }
