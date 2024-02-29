@@ -11,9 +11,9 @@ namespace WebApplicationHelpdeskDomain.Entities.Register
     {
         [Key]
         public Guid Id { get; set; }
-        [Required]
+        
         public string UserName { get; set; }
-        [Required]
+        
         public string UserEmail { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace WebApplicationHelpdeskDomain.Interfaces
     public interface IRegisterClientRepository
     {
         Task Create(RegisterForClient registerForClient);
+        Task<RegisterForClient?> GetByName(string name);
     }
 }

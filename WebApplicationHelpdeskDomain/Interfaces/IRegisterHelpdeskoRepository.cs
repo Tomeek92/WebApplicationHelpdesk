@@ -10,5 +10,6 @@ namespace WebApplicationHelpdeskDomain.Interfaces
     public interface IRegisterHelpdeskoRepository
     {
         Task Create(RegisterForHelpdesk registerForHelpdesk);
+        Task<RegisterForHelpdesk?> GetByName(string name);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,8 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
             _context.Add(registerForClient);
            await _context.SaveChangesAsync();
         }
+
+        public async Task<RegisterForClient?> GetByName(string name)
+       => await _context.userRegisterForClients.FirstOrDefaultAsync(cw=>cw.UserName.ToLower()==name.ToLower());
     }
 }

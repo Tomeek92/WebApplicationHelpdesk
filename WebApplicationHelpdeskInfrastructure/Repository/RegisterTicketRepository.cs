@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,10 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
             _context.Add(ticketCreate);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<TicketCreate?> GetByName(string name)
+        
+        =>   await _context.ticketCreates.FirstOrDefaultAsync(cw => cw.Title.ToLower() == name.ToLower());
+        
     }
 }
