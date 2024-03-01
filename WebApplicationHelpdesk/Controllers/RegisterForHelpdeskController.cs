@@ -16,9 +16,19 @@ namespace WebApplicationHelpdesk.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(HelpdeskUserDto registerForHelpdesk)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(registerForHelpdesk);
+            }
            await _registerClientService.Create(registerForHelpdesk);
             return View();
             
+        }
+        public async Task<IActionResult> Index()
+        {
+
+            var userHelpdesk = await _registerClientService.GetAll();
+            return View(userHelpdesk);
         }
     }
 }

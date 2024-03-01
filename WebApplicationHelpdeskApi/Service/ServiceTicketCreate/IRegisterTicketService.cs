@@ -6,5 +6,6 @@ namespace WebApplicationHelpdeskApi.Service.ServiceTicketCreate
     public interface IRegisterTicketService
     {
         Task Create(TicketCreateDto ticketCreate);
+        Task<IEnumerable<TicketCreateDto>> GetAll();
     }
 }

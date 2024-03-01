@@ -6,5 +6,6 @@ namespace WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk
     public interface IRegisterHelpdeskService
     {
         Task Create(HelpdeskUserDto registerForHelpdesk);
+        Task<IEnumerable<HelpdeskUserDto>> GetAll();
     }
 }

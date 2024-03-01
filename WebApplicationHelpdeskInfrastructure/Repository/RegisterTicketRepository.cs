@@ -23,6 +23,10 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<TicketCreate>> GetAll()
+            => await _context.ticketCreates.ToListAsync();
+       
+
         public async Task<TicketCreate?> GetByName(string name)
         
         =>   await _context.ticketCreates.FirstOrDefaultAsync(cw => cw.Title.ToLower() == name.ToLower());

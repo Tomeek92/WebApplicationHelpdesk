@@ -15,8 +15,17 @@ namespace WebApplicationHelpdesk.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TicketCreateDto ticketCreate)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(ticketCreate);
+            }
             await _registerTicketService.Create(ticketCreate);
             return View();
+        }
+        public async Task <IActionResult> Index()
+        {
+            var registerTicket = await _registerTicketService.GetAll();
+            return View(registerTicket);
         }
 
     }

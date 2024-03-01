@@ -14,6 +14,9 @@ namespace WebApplicationHelpdeskApi.Mapper
         public ClientCreateMappingProfile()
         {
             CreateMap<ClientUserDto, RegisterForClient>();
+            CreateMap<ClientUserDto, RegisterForClient>();
+            CreateMap<RegisterForClient, ClientUserDto>();
+
         }
     }
 }

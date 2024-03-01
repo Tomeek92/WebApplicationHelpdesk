@@ -10,6 +10,7 @@ namespace WebApplicationHelpdeskApi.Mapper
         public HelpdeskCreateMappingProfile()
         {
             CreateMap<HelpdeskUserDto, RegisterForHelpdesk>();
+            CreateMap<RegisterForHelpdesk, HelpdeskUserDto>();
         }
     }
 }

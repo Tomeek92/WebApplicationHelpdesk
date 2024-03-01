@@ -20,5 +20,13 @@ namespace WebApplicationHelpdeskApi.Service.ServiceRegisterClient
 
            await _context.Create(registerClient);
         }
+
+        public async Task<IEnumerable<ClientUserDto>> GetAll()
+        {
+            var registerForClient = await _context.GetAll();
+            var dtos = _mapper.Map<IEnumerable<ClientUserDto>>(registerForClient);
+
+            return dtos;
+        }
     }
 }

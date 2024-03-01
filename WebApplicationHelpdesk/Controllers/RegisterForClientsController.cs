@@ -13,6 +13,11 @@ namespace WebApplicationHelpdesk.Controllers
         {
             _registerClientService = registerClient;
         }
+        public async Task<IActionResult> Index() //główna strona z widokiem utworzonych kont klienta
+        {
+            var registerClient = await _registerClientService.GetAll();
+            return View(registerClient);
+        }
         public IActionResult Create()
         {
             return View();
@@ -20,6 +25,10 @@ namespace WebApplicationHelpdesk.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ClientUserDto registerForClient)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(registerForClient);
+            }
             await _registerClientService.Create(registerForClient);
             return View();
         }

@@ -11,5 +11,6 @@ namespace WebApplicationHelpdeskDomain.Interfaces
     {
         Task Create(RegisterForHelpdesk registerForHelpdesk);
         Task<RegisterForHelpdesk?> GetByName(string name);
+        Task<IEnumerable<RegisterForHelpdesk>> GetAll();
     }
 }

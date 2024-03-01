@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk
         {
             var registerHelpdesk = _mapper.Map<RegisterForHelpdesk>(registerForHelpdeskDto);
             await _context.Create(registerHelpdesk);
+        }
+
+        public async Task<IEnumerable<HelpdeskUserDto>> GetAll()
+        {
+            var userHelpdesk = await _context.GetAll();
+            var dtos = _mapper.Map<IEnumerable<HelpdeskUserDto>>(userHelpdesk);
+            return dtos;
         }
     }
 }

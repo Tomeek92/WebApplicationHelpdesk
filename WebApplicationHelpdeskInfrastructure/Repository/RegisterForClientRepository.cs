@@ -24,6 +24,11 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
            await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<RegisterForClient>> GetAll() 
+            => await _context.userRegisterForClients.ToListAsync();
+        
+            
+   
         public async Task<RegisterForClient?> GetByName(string name)
        => await _context.userRegisterForClients.FirstOrDefaultAsync(cw=>cw.UserName.ToLower()==name.ToLower());
     }

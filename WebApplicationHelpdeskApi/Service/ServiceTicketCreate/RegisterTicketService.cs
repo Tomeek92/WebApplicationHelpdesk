@@ -20,5 +20,13 @@ namespace WebApplicationHelpdeskApi.Service.ServiceTicketCreate
             var ticketCreate = _mapper.Map<TicketCreate>(ticketCreateDto);
             await _context.Create(ticketCreate);
         }
+
+        public async Task<IEnumerable<TicketCreateDto>> GetAll()
+        {
+            var ticketCreate = await _context.GetAll();
+            var dto = _mapper.Map<IEnumerable<TicketCreateDto>>(ticketCreate);
+
+            return dto;
+        }
     }
 }

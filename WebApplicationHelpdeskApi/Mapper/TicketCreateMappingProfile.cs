@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskDomain.Entities.Ticket;
 
+
 namespace WebApplicationHelpdeskApi.Mapper
 {
     public class TicketCreateMappingProfile : Profile
@@ -18,6 +19,11 @@ namespace WebApplicationHelpdeskApi.Mapper
                 {
                     Status = src.Status
                 }));
+            CreateMap<TicketCreate, TicketCreateDto>()
+                .ForMember(dto => dto.Status, opt => opt.MapFrom(src => src.Status.Status));
+                
+
+            
         }
     }
 }

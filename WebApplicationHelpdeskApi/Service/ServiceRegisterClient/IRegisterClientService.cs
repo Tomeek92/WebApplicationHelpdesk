@@ -11,5 +11,6 @@ namespace WebApplicationHelpdeskApi.Service.ServiceRegisterClient
     public interface IRegisterClientService
     {
         Task Create(ClientUserDto registerForClient);
+        Task<IEnumerable<ClientUserDto>> GetAll();
     }
 }

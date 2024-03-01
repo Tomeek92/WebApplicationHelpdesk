@@ -7,5 +7,6 @@ namespace WebApplicationHelpdeskDomain.Interfaces
     {
         Task Create(TicketCreate ticketCreate);
         Task<TicketCreate?>GetByName(string name);
+        Task<IEnumerable<TicketCreate>> GetAll();
     }
 }

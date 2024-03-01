@@ -13,7 +13,7 @@ namespace WebApplicationHelpdeskApi.Dto.ValidationDto
     {
         public ClientUserValidator(IRegisterClientRepository repository)
         {
-            RuleFor(c => c.Name)
+            RuleFor(c => c.UserName)
                 .NotEmpty()
                 .MinimumLength(2).WithMessage("Nazwa jest zbyt krótka")
                 .MaximumLength(20).WithMessage("Zbyt dużo znaków")
@@ -25,7 +25,7 @@ namespace WebApplicationHelpdeskApi.Dto.ValidationDto
                          context.AddFailure($"{value} nie jest unikalna nazwą dla klienta");
                      }
                  });
-            RuleFor(c => c.Email)
+            RuleFor(c => c.UserEmail)
                 .NotEmpty()
                 .MinimumLength(2).WithMessage("Email jest zbyt krótki")
                 .MaximumLength(30).WithMessage("przekroczyłeś liczbę znaków dla email");
