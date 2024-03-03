@@ -1,12 +1,16 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplicationHelpdeskApi.Dto.ValidationDto;
+using WebApplicationHelpdeskApi.Command.ClientUsers;
+using WebApplicationHelpdeskApi.Command.ClientUsers.Validators;
+using WebApplicationHelpdeskApi.Command.HelpdeskUsers;
+using WebApplicationHelpdeskApi.Command.HelpdeskUsers.Validators;
+using WebApplicationHelpdeskApi.Command.RegisterTicket;
+using WebApplicationHelpdeskApi.Command.RegisterTicket.Validator;
 using WebApplicationHelpdeskApi.Mapper;
-using WebApplicationHelpdeskApi.Service.ServiceRegisterClient;
-using WebApplicationHelpdeskApi.Service.ServiceRegisterHelpdesk;
-using WebApplicationHelpdeskApi.Service.ServiceTicketCreate;
-using WebApplicationHelpdeskDomain.Interfaces;
+
+
 
 namespace WebApplicationHelpdeskApi.Extension
 {
@@ -14,18 +18,18 @@ namespace WebApplicationHelpdeskApi.Extension
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IRegisterClientService, RegisterClientService>();
-            services.AddScoped<IRegisterHelpdeskService, RegisterHelpdeskService>();
-            services.AddScoped<IRegisterTicketService,RegisterTicketService>();
+            services.AddMediatR(typeof(CreateClientUserCommand));
+            services.AddMediatR(typeof(CreateHelpdeskUserCommand));
+            services.AddMediatR(typeof(TicketCreateCommand));
             services.AddAutoMapper(typeof(ClientCreateMappingProfile));
             services.AddAutoMapper(typeof(HelpdeskCreateMappingProfile));
-            services.AddValidatorsFromAssemblyContaining<ClientUserValidator>()
+            services.AddValidatorsFromAssemblyContaining<ClientUserCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();//po stronie frontendu reguly walidacji
-            services.AddValidatorsFromAssemblyContaining<HelpdeskUserValidator>()
+            services.AddValidatorsFromAssemblyContaining<HelpdeskUserCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
-            services.AddValidatorsFromAssemblyContaining<TicketCreateValidator>()
+            services.AddValidatorsFromAssemblyContaining<TicketCreateCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
         }

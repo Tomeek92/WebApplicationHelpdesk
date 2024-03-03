@@ -1,16 +1,12 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskDomain.Interfaces;
 
-namespace WebApplicationHelpdeskApi.Dto.ValidationDto
+namespace WebApplicationHelpdeskApi.Command.HelpdeskUsers.Validators
 {
-    public class HelpdeskUserValidator : AbstractValidator<HelpdeskUserDto>
+    public class HelpdeskUserCommandValidator : AbstractValidator<CreateHelpdeskUserCommand>
     {
-        public HelpdeskUserValidator(IRegisterHelpdeskoRepository repository)
+        public HelpdeskUserCommandValidator(IRegisterHelpdeskoRepository repository)
         {
             RuleFor(c => c.UserEmail)
                 .NotEmpty()

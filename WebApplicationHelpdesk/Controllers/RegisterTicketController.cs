@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi.Dto;
-using WebApplicationHelpdeskApi.Service.ServiceTicketCreate;
-using WebApplicationHelpdeskDomain.Entities.Ticket;
+using WebApplicationHelpdeskApi.Queries.RegisterTicket;
+
 
 namespace WebApplicationHelpdesk.Controllers
 {
     public class RegisterTicketController : Controller
     {
-        private readonly IRegisterTicketService _registerTicketService;
-        public RegisterTicketController(IRegisterTicketService registerTicketService)
+        private readonly IMediator _mediator;
+        public RegisterTicketController(IMediator mediator)
         {
-            _registerTicketService = registerTicketService;
+            _mediator = mediator;
         }
         [HttpPost]
         public async Task<IActionResult> Create(TicketCreateDto ticketCreate)
@@ -19,12 +20,12 @@ namespace WebApplicationHelpdesk.Controllers
             {
                 return View(ticketCreate);
             }
-            await _registerTicketService.Create(ticketCreate);
+            await _mediator.Send(ticketCreate);
             return View();
         }
         public async Task <IActionResult> Index()
         {
-            var registerTicket = await _registerTicketService.GetAll();
+            var registerTicket = await _mediator.Send(new GetAllCreateTicketQuery());
             return View(registerTicket);
         }
 

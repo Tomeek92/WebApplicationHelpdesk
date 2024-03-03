@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using WebApplicationHelpdeskDomain.Interfaces;
 
 
-namespace WebApplicationHelpdeskApi.Dto.ValidationDto
+namespace WebApplicationHelpdeskApi.Command.ClientUsers.Validators
 {
-    public class ClientUserValidator : AbstractValidator<ClientUserDto>
+    public class ClientUserCommandValidator : AbstractValidator<CreateClientUserCommand>
     {
-        public ClientUserValidator(IRegisterClientRepository repository)
+        public ClientUserCommandValidator(IRegisterClientRepository repository)
         {
             RuleFor(c => c.UserName)
                 .NotEmpty()
@@ -20,7 +20,7 @@ namespace WebApplicationHelpdeskApi.Dto.ValidationDto
                 .Custom((value, context) =>
                  {
                      var nameExistingNameClient = repository.GetByName(value).Result;
-                     if(nameExistingNameClient != null)
+                     if (nameExistingNameClient != null)
                      {
                          context.AddFailure($"{value} nie jest unikalna nazwą dla klienta");
                      }

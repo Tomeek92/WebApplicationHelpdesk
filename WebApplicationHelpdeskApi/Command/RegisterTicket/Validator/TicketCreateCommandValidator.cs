@@ -1,16 +1,10 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebApplicationHelpdeskDomain.Interfaces;
 
-namespace WebApplicationHelpdeskApi.Dto.ValidationDto
-{
-    public class TicketCreateValidator : AbstractValidator<TicketCreateDto>
+namespace WebApplicationHelpdeskApi.Command.RegisterTicket.Validator;
+    public class TicketCreateCommandValidator : AbstractValidator<TicketCreateCommand>
     {
-        public TicketCreateValidator(IRegisterTicketRepository repository)
+        public TicketCreateCommandValidator(IRegisterTicketRepository repository)
         {
             RuleFor(c => c.Title)
                 .NotEmpty()
@@ -33,4 +27,4 @@ namespace WebApplicationHelpdeskApi.Dto.ValidationDto
 
         }
     }
-}
+

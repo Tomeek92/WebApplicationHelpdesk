@@ -1,21 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi;
-using WebApplicationHelpdeskApi.Service.ServiceRegisterClient;
+using WebApplicationHelpdeskApi.Command.ClientUsers;
+using WebApplicationHelpdeskApi.Queries;
+using WebApplicationHelpdeskApi.Queries.ClientUsers;
 using WebApplicationHelpdeskDomain.Entities.Register;
+
 
 namespace WebApplicationHelpdesk.Controllers
 {
     public class RegisterForClientsController : Controller
     {
-        private readonly IRegisterClientService _registerClientService;
+        private readonly IMediator _mediator;
 
-        public RegisterForClientsController(IRegisterClientService registerClient)
+        public RegisterForClientsController(IMediator mediator)
         {
-            _registerClientService = registerClient;
+            _mediator = mediator;
         }
         public async Task<IActionResult> Index() //główna strona z widokiem utworzonych kont klienta
         {
-            var registerClient = await _registerClientService.GetAll();
+            var registerClient = await _mediator.Send(new GetAllRegisterClientQuery());
             return View(registerClient);
         }
         public IActionResult Create()
@@ -23,13 +27,13 @@ namespace WebApplicationHelpdesk.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(ClientUserDto registerForClient)
+        public async Task<IActionResult> Create(CreateClientUserCommand command)
         {
             if (!ModelState.IsValid)
             {
-                return View(registerForClient);
+                return View(command);
             }
-            await _registerClientService.Create(registerForClient);
+            await _mediator.Send(command);
             return View();
         }
     }
