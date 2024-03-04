@@ -7,9 +7,9 @@ namespace WebApplicationHelpdeskApi.Command.ClientUsers.Handler
 {
     public class CreateClientUserHandler : IRequestHandler<CreateClientUserCommand>
     {
-        private readonly IRegisterClientRepository _context;
+        private readonly IRegisterUserForClientRepository _context;
         private readonly IMapper _mapper;
-        public CreateClientUserHandler(IRegisterClientRepository context, IMapper mapper)
+        public CreateClientUserHandler(IRegisterUserForClientRepository context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

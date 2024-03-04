@@ -2,7 +2,43 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helpdesk - Strona Główna</title>
+    <style>
+        .card {
+            width: 33rem;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .btn-green {
+            background-color: orange;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbWrEEOqSHlTYNYcdwkSjIgE0kEC3DHVDbYrXp3ESUht3oaMK_2OZi107Q6YqDtjW2iCq8UfSLwWMzlF_Jho3mLETfFPbWhkDbiQZHgCpis42ssl6dmKVfISgzS2SYDrV4I9WO-i_CuME/s1600/web-design-statistics.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h1 class="card-title">Witaj w Helpdesk!</h1>
+            <p class="card-text">Zaloguj się, aby kontynuować.</p>
+            <div class="button-container">
+                <a href="/login" class="btn btn-green">Zaloguj się jako klient</a>
+                <a href="/login" class="btn btn-primary">Zaloguj się jako pracownik</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -6,9 +6,9 @@ namespace WebApplicationHelpdeskApi.Queries.ClientUsers.Handler
 {
     public class GetAllRegisterClientQueryHandler : IRequestHandler<GetAllRegisterClientQuery, IEnumerable<ClientUserDto>>
     {
-        private readonly IRegisterClientRepository _context;
+        private readonly IRegisterUserForClientRepository _context;
         private readonly IMapper _mapper;
-        public GetAllRegisterClientQueryHandler(IRegisterClientRepository context, IMapper mapper)
+        public GetAllRegisterClientQueryHandler(IRegisterUserForClientRepository context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

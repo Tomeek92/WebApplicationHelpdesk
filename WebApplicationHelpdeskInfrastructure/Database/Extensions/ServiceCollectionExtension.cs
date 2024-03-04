@@ -28,9 +28,10 @@ namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
             services.AddScoped<UserHelpdeskSeeder>();
             services.AddScoped<RegisterForClientSeeder>();
             services.AddScoped<RegisterForHelpdeskSeeder>();
-            services.AddScoped<IRegisterClientRepository, RegisterForClientRepository>();
+            services.AddScoped<IRegisterUserForClientRepository, RegisterUsersForClientRepository>();
             services.AddScoped<IRegisterHelpdeskoRepository, RegisterForHelpdeskRepository>();
             services.AddScoped<IRegisterTicketRepository, RegisterTicketRepository>();
+            services.AddScoped<IRegisterClientRepository, RegisterForClientRepository>();
         }
     }
 }

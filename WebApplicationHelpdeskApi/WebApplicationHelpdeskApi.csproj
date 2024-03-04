@@ -22,8 +22,4 @@
     <ProjectReference Include="..\WebApplicationHelpdeskDomain\WebApplicationHelpdeskDomain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
-
 </Project>

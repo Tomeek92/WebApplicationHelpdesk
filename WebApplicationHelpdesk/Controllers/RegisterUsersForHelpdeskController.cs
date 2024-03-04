@@ -6,10 +6,10 @@ using WebApplicationHelpdeskApi.Queries.HelpdeskUsers;
 
 namespace WebApplicationHelpdesk.Controllers
 {
-    public class RegisterForHelpdeskController : Controller
+    public class RegisterUsersForHelpdeskController : Controller
     {
         private readonly IMediator _mediator;
-        public RegisterForHelpdeskController(IMediator mediator)
+        public RegisterUsersForHelpdeskController(IMediator mediator)
         {
             _mediator = mediator;
         }

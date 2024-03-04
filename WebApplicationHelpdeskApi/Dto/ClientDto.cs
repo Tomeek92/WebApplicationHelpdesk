@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApplicationHelpdeskDomain.Entities.Clients
+namespace WebApplicationHelpdeskApi.Dto
 {
-    public class Client
+    public class ClientDto
     {
-        [Key]
-        public Guid Id { get; set; }
         
         public string? Name { get; set; }
         
@@ -19,6 +17,5 @@ namespace WebApplicationHelpdeskDomain.Entities.Clients
         public int PostCode { get; set; }
         
         public int Nip { get; set; }
-        
     }
 }

@@ -11,7 +11,7 @@ namespace WebApplicationHelpdeskApi.Command.ClientUsers.Validators
 {
     public class ClientUserCommandValidator : AbstractValidator<CreateClientUserCommand>
     {
-        public ClientUserCommandValidator(IRegisterClientRepository repository)
+        public ClientUserCommandValidator(IRegisterUserForClientRepository repository)
         {
             RuleFor(c => c.UserName)
                 .NotEmpty()

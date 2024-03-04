@@ -9,11 +9,11 @@ using WebApplicationHelpdeskDomain.Entities.Register;
 
 namespace WebApplicationHelpdesk.Controllers
 {
-    public class RegisterForClientsController : Controller
+    public class RegisterUsersForClientsController : Controller
     {
         private readonly IMediator _mediator;
 
-        public RegisterForClientsController(IMediator mediator)
+        public RegisterUsersForClientsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -26,6 +26,12 @@ namespace WebApplicationHelpdesk.Controllers
         {
             return View();
         }
+        [Route("RegisterForClients/Details")]
+        public IActionResult Details(string details)
+        {
+            return View(details);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateClientUserCommand command)
         {
