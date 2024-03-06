@@ -42,5 +42,7 @@ namespace WebApplicationHelpdesk.Controllers
             await _mediator.Send(command);
             return View();
         }
+
     }
+
 }

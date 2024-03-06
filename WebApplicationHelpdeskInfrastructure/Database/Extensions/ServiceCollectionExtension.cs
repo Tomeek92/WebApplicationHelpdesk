@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -19,6 +20,12 @@ namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
             services.AddDbContext<WebApplicationHelpdeskDbContext>(options => options.UseSqlServer(
            configuration.GetConnectionString("WebApplicationHelpdesk"),
            b => b.MigrationsAssembly("WebApplicationHelpdesk")));
+
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.SignIn.RequireConfirmedEmail = false;
+            })
+           .AddEntityFrameworkStores<WebApplicationHelpdeskDbContext>();
 
             services.AddScoped<ClientSeeder>();
             services.AddScoped<UserClientSeeder>();

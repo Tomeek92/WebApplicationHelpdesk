@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -11,7 +12,7 @@ using WebApplicationHelpdeskDomain.Entities.Ticket;
 namespace WebApplicationHelpdeskInfrastructure.Database
 {
    
-    public class WebApplicationHelpdeskDbContext : DbContext
+    public class WebApplicationHelpdeskDbContext : IdentityDbContext
     {
         public WebApplicationHelpdeskDbContext(DbContextOptions<WebApplicationHelpdeskDbContext> options) : base(options)
         {
@@ -33,7 +34,7 @@ namespace WebApplicationHelpdeskInfrastructure.Database
         }
 
     }
-    }
+ }
 
 
 

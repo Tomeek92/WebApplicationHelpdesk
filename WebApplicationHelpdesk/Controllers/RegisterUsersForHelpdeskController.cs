@@ -13,6 +13,10 @@ namespace WebApplicationHelpdesk.Controllers
         {
             _mediator = mediator;
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Create(HelpdeskUserDto registerForHelpdesk)
         {

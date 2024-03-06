@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplicationHelpdeskInfrastructure.Database;
 
@@ -11,9 +12,11 @@ using WebApplicationHelpdeskInfrastructure.Database;
 namespace WebApplicationHelpdesk.Migrations
 {
     [DbContext(typeof(WebApplicationHelpdeskDbContext))]
-    partial class WebApplicationHelpdeskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240306091359_Identity")]
+    partial class Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

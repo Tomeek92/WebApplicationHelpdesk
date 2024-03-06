@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Identity" asp-controller="Manage" asp-action="Index">Witaj, @UserManager.GetUserName(User)!</a>
+                </li>
+                <li class="nav-item">
+                    <form asp-area="Identity" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                        <button type="submit" class="btn btn-outline-primary nav-link">Wyloguj</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" asp-controller="RegisterUsersForClients" asp-action="Create">Zarejestruj konto dla klienta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Zarejestruj konto dla pracownika</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Login">Zaloguj</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

@@ -8,7 +8,8 @@ namespace WebApplicationHelpdeskApi.Dto
 {
     public class HelpdeskUserDto
     {
-        public string UserName { get; set; }
-        public string UserEmail { get; set; }
+        public string UserName { get; set; } = null!;
+        public string UserEmail { get; set; } = null!;
+        public string UserPassword { get; set; } = null!;
     }
 }
