@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApplicationHelpdeskDomain.Entities.Clients;
 using WebApplicationHelpdeskDomain.Entities.Register;
 using WebApplicationHelpdeskDomain.Interfaces;
 using WebApplicationHelpdeskInfrastructure.Database;
@@ -20,11 +21,15 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
         }
 
         public async Task<IEnumerable<RegisterForClient>> GetAll() 
-            => await _context.userRegisterForClients.ToListAsync();
+       => await _context.userRegisterForClients.ToListAsync();
         
             
    
         public async Task<RegisterForClient?> GetByName(string name)
        => await _context.userRegisterForClients.FirstOrDefaultAsync(cw=>cw.UserName.ToLower()==name.ToLower());
+
+        public async Task<RegisterForClient> GetDetailsByUserName(string userName)
+       => await _context.userRegisterForClients.FirstOrDefaultAsync(c => c.UserName == userName);
+        
     }
 }

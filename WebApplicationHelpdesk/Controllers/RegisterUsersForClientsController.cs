@@ -26,10 +26,17 @@ namespace WebApplicationHelpdesk.Controllers
         {
             return View();
         }
-        [Route("RegisterForClients/Details")]
-        public IActionResult Details(string details)
+        
+        public async Task<IActionResult> Details(string details)
         {
-            return View(details);
+          var dto = await _mediator.Send(new GetRegisterClientUserQuery(details));
+            return View(dto);
+        }
+        [Route("RegisterForClients/Edit")]
+        public async Task<IActionResult> Edit(string edit)
+        {
+           // var dto = await _mediator.Send(new )
+            return View(edit);
         }
 
         [HttpPost]

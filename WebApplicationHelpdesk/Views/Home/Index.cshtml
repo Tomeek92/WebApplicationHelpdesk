@@ -1,44 +1,67 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Helpdesk - Strona Główna</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         .card {
-            width: 33rem;
-            margin: 0 auto;
-            margin-top: 50px;
+            width: 18rem; /* zmniejsz szerokość karty */
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body {
+            flex: 1;
         }
 
         .button-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
+            margin-top: auto;
         }
 
         .btn-green {
-            background-color: orange;
+            background-color: dodgerblue;
             color: white;
         }
-
     </style>
 </head>
 <body>
-    <div class="card">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbWrEEOqSHlTYNYcdwkSjIgE0kEC3DHVDbYrXp3ESUht3oaMK_2OZi107Q6YqDtjW2iCq8UfSLwWMzlF_Jho3mLETfFPbWhkDbiQZHgCpis42ssl6dmKVfISgzS2SYDrV4I9WO-i_CuME/s1600/web-design-statistics.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h1 class="card-title">Witaj w Helpdesk!</h1>
-            <p class="card-text">Zaloguj się, aby kontynuować.</p>
-            <div class="button-container">
-                <a href="/login" class="btn btn-green">Zaloguj się jako klient</a>
-                <a href="/login" class="btn btn-primary">Zaloguj się jako pracownik</a>
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbWrEEOqSHlTYNYcdwkSjIgE0kEC3DHVDbYrXp3ESUht3oaMK_2OZi107Q6YqDtjW2iCq8UfSLwWMzlF_Jho3mLETfFPbWhkDbiQZHgCpis42ssl6dmKVfISgzS2SYDrV4I9WO-i_CuME/s1600/web-design-statistics.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">Strona główna!</h3>
+                    <p class="card-text">Sprawdź naszą stronę główną!</p>
+                </div>
+                <div class="button-container">
+                    <a href="/Account/Login" class="btn btn-green btn-lg btn-block">Strona główna</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://ochronasieci.pl/wp-content/uploads/2021/12/poczazabeziecz.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">Poczta!</h3>
+                    <p class="card-text">O to służbowy email!</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://outlook.com" class="btn btn-green btn-lg btn-block">Poczta</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://assets-global.website-files.com/604659c66faae72df4449f20/62e22f0371ed515891e0db05_61dc30c673f74e711ab4010a_thumbnail%20(3).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">Witaj w Helpdesk!</h3>
+                    <p class="card-text">Sprawdź swoje zgłoszenia na naszej nowej platformie!</p>
+                </div>
+                <div class="button-container">
+                    <a href="/Account/Login" class="btn btn-green btn-lg btn-block">Help Desk Serwis</a>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
 
 

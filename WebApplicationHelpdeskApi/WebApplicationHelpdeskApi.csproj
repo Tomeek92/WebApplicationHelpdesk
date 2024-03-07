@@ -22,4 +22,8 @@
     <ProjectReference Include="..\WebApplicationHelpdeskDomain\WebApplicationHelpdeskDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Command\EditClientUsers\Handler\" />
+  </ItemGroup>
+
 </Project>

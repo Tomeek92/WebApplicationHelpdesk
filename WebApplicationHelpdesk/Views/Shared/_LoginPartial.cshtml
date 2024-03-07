@@ -14,21 +14,26 @@
                     <a class="nav-link" asp-area="Identity" asp-controller="Manage" asp-action="Index">Witaj, @UserManager.GetUserName(User)!</a>
                 </li>
                 <li class="nav-item">
-                    <form asp-area="Identity" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
-                        <button type="submit" class="btn btn-outline-primary nav-link">Wyloguj</button>
-                    </form>
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForClients" asp-action="Create">Zarejestruj konto dla klienta</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Zarejestruj konto dla pracownika</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Index">Users Helpdesk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForClients" asp-action="Index">Users Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Wyloguj</a>
+                </li>
+
             }
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary" asp-controller="RegisterUsersForClients" asp-action="Create">Zarejestruj konto dla klienta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Zarejestruj konto dla pracownika</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Login">Zaloguj</a>
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Zaloguj</a>
                 </li>
             }
         </ul>

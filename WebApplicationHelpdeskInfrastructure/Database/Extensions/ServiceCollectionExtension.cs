@@ -24,8 +24,14 @@ namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
             services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedEmail = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 0;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
             })
            .AddEntityFrameworkStores<WebApplicationHelpdeskDbContext>();
+            
 
             services.AddScoped<ClientSeeder>();
             services.AddScoped<UserClientSeeder>();
