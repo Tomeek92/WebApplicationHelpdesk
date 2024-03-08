@@ -5,5 +5,6 @@ namespace WebApplicationHelpdeskApi.Command.RegisterTicket
 {
     public class TicketCreateCommand : TicketCreateDto, IRequest
     {
+
     }
 }

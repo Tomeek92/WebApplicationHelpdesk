@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace WebApplicationHelpdeskDomain.Entities.Register
         public string UserName { get; set; } = null!;
         
         public string UserEmail { get; set; } = null!;
+        public string? CreateById { get; set; }
+        public IdentityUser? CreatedBy { get; set; }
     }
 }

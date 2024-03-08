@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi.Command.Client;
 using WebApplicationHelpdeskApi.Queries.Clients;
@@ -13,10 +14,16 @@ namespace WebApplicationHelpdesk.Controllers
         {
             _mediator = mediator;  
         }
+        [Authorize]
         public IActionResult Create()
         {
+            if (!User.IsInRole("Employee"))
+            {
+                RedirectToAction("Home");
+            }
             return View();
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateClientCommand createClient)
         {

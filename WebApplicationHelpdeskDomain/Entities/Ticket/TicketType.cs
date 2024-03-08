@@ -10,13 +10,8 @@ namespace WebApplicationHelpdeskDomain.Entities.Ticket
     public class TicketType
     {
         [Key]
-        public Guid Id { get; set; }    
-        public enum TicketTypee
-        {
-            ApplicationError,
-            OperationalSupervision,
-            Failure,
-            Consultation
-        }
+        public Guid Id { get; set; } 
+        public string TicketTypee { get; set; } = default!;
+       
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationHelpdeskApi.Command.RegisterTicket;
 using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskApi.Queries.RegisterTicket;
 
@@ -13,14 +14,27 @@ namespace WebApplicationHelpdesk.Controllers
         {
             _mediator = mediator;
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(TicketCreateDto ticketCreate)
+        public IActionResult Create()
         {
-            if(!ModelState.IsValid)
+            return View();
+        }
+        [HttpPost]
+        [HttpPost]
+        public async Task<IActionResult> Create(TicketCreateDto ticketCreateDto)
+        {
+            if (!ModelState.IsValid)
             {
-                return View(ticketCreate);
+                return View(ticketCreateDto);
             }
-            await _mediator.Send(ticketCreate);
+
+            var ticketCreateCommand = new TicketCreateCommand
+            {
+                Title = ticketCreateDto.Title,
+                Description = ticketCreateDto.Description,
+                Status = ticketCreateDto.Status
+            };
+
+            await _mediator.Send(ticketCreateCommand);
             return View();
         }
         public async Task <IActionResult> Index()

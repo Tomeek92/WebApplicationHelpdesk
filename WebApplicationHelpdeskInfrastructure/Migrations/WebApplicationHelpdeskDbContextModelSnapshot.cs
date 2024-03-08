@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplicationHelpdeskInfrastructure.Database;
 
 #nullable disable
 
-namespace WebApplicationHelpdesk.Migrations
+namespace WebApplicationHelpdeskInfrastructure.Migrations
 {
     [DbContext(typeof(WebApplicationHelpdeskDbContext))]
-    [Migration("20240306091359_Identity")]
-    partial class Identity
+    partial class WebApplicationHelpdeskDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -288,6 +285,12 @@ namespace WebApplicationHelpdesk.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CreateById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -297,6 +300,8 @@ namespace WebApplicationHelpdesk.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
 
                     b.ToTable("userRegisterForClients");
                 });
@@ -339,9 +344,6 @@ namespace WebApplicationHelpdesk.Migrations
                     b.Property<Guid>("StatusId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TicketTypeeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -349,8 +351,6 @@ namespace WebApplicationHelpdesk.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("StatusId");
-
-                    b.HasIndex("TicketTypeeId");
 
                     b.ToTable("ticketCreates");
                 });
@@ -415,17 +415,6 @@ namespace WebApplicationHelpdesk.Migrations
                     b.ToTable("ticketStatus");
                 });
 
-            modelBuilder.Entity("WebApplicationHelpdeskDomain.Entities.Ticket.TicketType", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TicketType");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -477,6 +466,15 @@ namespace WebApplicationHelpdesk.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApplicationHelpdeskDomain.Entities.Register.RegisterForClient", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.Navigation("CreatedBy");
+                });
+
             modelBuilder.Entity("WebApplicationHelpdeskDomain.Entities.Ticket.TicketCreate", b =>
                 {
                     b.HasOne("WebApplicationHelpdeskDomain.Entities.Ticket.TicketStatus", "Status")
@@ -485,15 +483,7 @@ namespace WebApplicationHelpdesk.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplicationHelpdeskDomain.Entities.Ticket.TicketType", "TicketTypee")
-                        .WithMany()
-                        .HasForeignKey("TicketTypeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Status");
-
-                    b.Navigation("TicketTypee");
                 });
 #pragma warning restore 612, 618
         }

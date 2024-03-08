@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi.Dto;
+using WebApplicationHelpdeskApi.Queries.ClientUsers;
 using WebApplicationHelpdeskApi.Queries.HelpdeskUsers;
 
 
@@ -27,6 +28,11 @@ namespace WebApplicationHelpdesk.Controllers
            await _mediator.Send(registerForHelpdesk);
             return View();
             
+        }
+        public async Task<IActionResult> Details(string details)
+        {
+            var dto = await _mediator.Send(new GetRegisterUserHelpdeskQuery(details));
+            return View(dto);
         }
         public async Task<IActionResult> Index()
         {

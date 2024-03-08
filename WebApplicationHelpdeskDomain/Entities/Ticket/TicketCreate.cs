@@ -15,6 +15,5 @@ namespace WebApplicationHelpdeskDomain.Entities.Ticket
         public DateTime StartTime { get; set; }
         public TicketStatus Status { get; set; } = default!;
         public DateTime CloseTime { get; set; }
-        public TicketType TicketTypee { get; set; } = default!;
     }
 }

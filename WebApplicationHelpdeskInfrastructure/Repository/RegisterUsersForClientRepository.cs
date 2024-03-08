@@ -29,7 +29,7 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
        => await _context.userRegisterForClients.FirstOrDefaultAsync(cw=>cw.UserName.ToLower()==name.ToLower());
 
         public async Task<RegisterForClient> GetDetailsByUserName(string userName)
-       => await _context.userRegisterForClients.FirstOrDefaultAsync(c => c.UserName == userName);
+       => await _context.userRegisterForClients.FirstAsync(c => c.UserName == userName);
         
     }
 }

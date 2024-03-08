@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-using System.Reflection;
 using WebApplicationHelpdeskDomain.Entities.Clients;
 using WebApplicationHelpdeskDomain.Entities.Helpdesk;
 using WebApplicationHelpdeskDomain.Entities.Register;
 using WebApplicationHelpdeskDomain.Entities.Ticket;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 
 namespace WebApplicationHelpdeskInfrastructure.Database
@@ -27,7 +26,8 @@ namespace WebApplicationHelpdeskInfrastructure.Database
         public DbSet<UsersHelpdesk> userHelpdesks { get; set; }
         public DbSet<RegisterForClient> userRegisterForClients { get; set; }
         public DbSet<RegisterForHelpdesk> userRegisterForHelpdesks { get; set; }
-
+         
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);  

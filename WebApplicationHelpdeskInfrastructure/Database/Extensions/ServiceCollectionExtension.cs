@@ -2,14 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebApplicationHelpdeskDomain.Interfaces;
 using WebApplicationHelpdeskInfrastructure.Database.Seeders;
 using WebApplicationHelpdeskInfrastructure.Repository;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
 {
@@ -20,17 +17,13 @@ namespace WebApplicationHelpdeskInfrastructure.Database.Extensions
             services.AddDbContext<WebApplicationHelpdeskDbContext>(options => options.UseSqlServer(
            configuration.GetConnectionString("WebApplicationHelpdesk"),
            b => b.MigrationsAssembly("WebApplicationHelpdesk")));
+            
 
-            services.AddDefaultIdentity<IdentityUser>(options =>
-            {
-                options.SignIn.RequireConfirmedEmail = false;
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 0;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            })
-           .AddEntityFrameworkStores<WebApplicationHelpdeskDbContext>();
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<WebApplicationHelpdeskDbContext>();
             
 
             services.AddScoped<ClientSeeder>();

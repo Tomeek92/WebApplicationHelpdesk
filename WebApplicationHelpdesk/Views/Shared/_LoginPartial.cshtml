@@ -13,11 +13,15 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-area="Identity" asp-controller="Manage" asp-action="Index">Witaj, @UserManager.GetUserName(User)!</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForClients" asp-action="Create">Zarejestruj konto dla klienta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Zarejestruj konto dla pracownika</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Rejestracja
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-area="" asp-controller="RegisterUsersForClients" asp-action="Create">Rejestracja konta klienta</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Rejestracja konta pracownika</a></li>
+                        <!-- Dodaj więcej elementów menu tutaj -->
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Index">Users Helpdesk</a>
@@ -28,7 +32,6 @@
                 <li class="nav-item">
                     <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Wyloguj</a>
                 </li>
-
             }
             else
             {

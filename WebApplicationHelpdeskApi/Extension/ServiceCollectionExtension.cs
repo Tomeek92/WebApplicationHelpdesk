@@ -2,6 +2,7 @@
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplicationHelpdesk.OnlineUsers;
 using WebApplicationHelpdeskApi.Command.Client;
 using WebApplicationHelpdeskApi.Command.ClientUsers;
 using WebApplicationHelpdeskApi.Command.ClientUsers.Validators;
@@ -13,12 +14,14 @@ using WebApplicationHelpdeskApi.Mapper;
 
 
 
+
 namespace WebApplicationHelpdeskApi.Extension
 {
     public static class ServiceCollectionExtension
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            services.AddScoped<IUserContext,UserContext>();
             services.AddMediatR(typeof(CreateClientUserCommand));
             services.AddMediatR(typeof(CreateHelpdeskUserCommand));
             services.AddMediatR(typeof(TicketCreateCommand));

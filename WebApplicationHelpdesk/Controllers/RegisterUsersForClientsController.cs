@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi;
 using WebApplicationHelpdeskApi.Command.ClientUsers;
@@ -22,10 +23,7 @@ namespace WebApplicationHelpdesk.Controllers
             var registerClient = await _mediator.Send(new GetAllRegisterClientQuery());
             return View(registerClient);
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
+        
         
         public async Task<IActionResult> Details(string details)
         {
@@ -38,7 +36,13 @@ namespace WebApplicationHelpdesk.Controllers
            // var dto = await _mediator.Send(new )
             return View(edit);
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
 
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateClientUserCommand command)
         {
