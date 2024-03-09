@@ -33,6 +33,7 @@ namespace WebApplicationHelpdeskApi.Command.ClientUsers.Handler
 
             registerClient.CreateById = _userContext.GetOnlineUser().Id;
 
+
             await _context.Create(registerClient);
 
             return Unit.Value;

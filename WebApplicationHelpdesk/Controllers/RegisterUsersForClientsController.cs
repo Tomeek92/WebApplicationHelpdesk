@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi;
@@ -13,10 +14,12 @@ namespace WebApplicationHelpdesk.Controllers
     public class RegisterUsersForClientsController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public RegisterUsersForClientsController(IMediator mediator)
+        public RegisterUsersForClientsController(IMediator mediator,IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
         public async Task<IActionResult> Index() //główna strona z widokiem utworzonych kont klienta
         {
@@ -30,12 +33,7 @@ namespace WebApplicationHelpdesk.Controllers
           var dto = await _mediator.Send(new GetRegisterClientUserQuery(details));
             return View(dto);
         }
-        [Route("RegisterForClients/Edit")]
-        public async Task<IActionResult> Edit(string edit)
-        {
-           // var dto = await _mediator.Send(new )
-            return View(edit);
-        }
+       
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {

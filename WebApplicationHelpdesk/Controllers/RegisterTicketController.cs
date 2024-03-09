@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationHelpdeskApi.Command.RegisterTicket;
 using WebApplicationHelpdeskApi.Dto;
@@ -14,11 +15,12 @@ namespace WebApplicationHelpdesk.Controllers
         {
             _mediator = mediator;
         }
+        [Authorize(Roles = "Employee,Admin")]
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
+        [Authorize(Roles = "Employee,Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(TicketCreateDto ticketCreateDto)
         {
