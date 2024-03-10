@@ -27,7 +27,7 @@ namespace WebApplicationHelpdeskInfrastructure.Repository
             => await _context.userRegisterForHelpdesks.FirstOrDefaultAsync(cw => cw.UserEmail.ToLower() == nameEmail.ToLower());
 
         public async Task<RegisterForHelpdesk> GetDetailsByUserName(string userName)
-            => await _context.userRegisterForHelpdesks.FirstAsync(c => c.UserName == userName);
+            => await _context.userRegisterForHelpdesks.FirstOrDefaultAsync(c => c.UserName == userName);
         
             
         

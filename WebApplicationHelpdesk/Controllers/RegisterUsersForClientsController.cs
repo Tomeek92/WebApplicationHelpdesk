@@ -49,7 +49,7 @@ namespace WebApplicationHelpdesk.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
-            return View();
+            return RedirectToAction("Index");
         }
 
     }

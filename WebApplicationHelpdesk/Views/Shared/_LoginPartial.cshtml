@@ -11,21 +11,23 @@
             @if (SignInManager.IsSignedIn(User))
             {
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="Identity" asp-controller="Manage" asp-action="Index">Witaj, @UserManager.GetUserName(User)!</a>
+                    <a class="nav-link" asp-area="Identity" asp-controller="RegisterUsersForHelpdesk" asp-action="Details">Witaj, @UserManager.GetUserName(User)!</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Rejestracja
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" asp-area="" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Rejestracja konta klienta</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Rejestracja kont dla klienta</a></li>
                         <li><a class="dropdown-item" asp-area="" asp-controller="RegisterUsersForHelpdesk" asp-action="Create">Rejestracja konta pracownika</a></li>
                         <li><a class="dropdown-item" asp-area="" asp-controller="RegisterTicket" asp-action="Create">Dodaj zgłoszenie</a></li>
-                        <!-- Dodaj więcej elementów menu tutaj -->
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="Index">Wszyscy użytkownicy</a>
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterTicket" asp-action="Index">Twoje zgłoszenia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-out-primary" asp-controller="RegisterUsersForHelpdesk" asp-action="AllUsers">Wszyscy użytkownicy</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Wyloguj</a>

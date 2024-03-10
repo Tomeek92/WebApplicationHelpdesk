@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationHelpdesk.Extension;
 using WebApplicationHelpdeskApi.Command.RegisterTicket;
 using WebApplicationHelpdeskApi.Dto;
 using WebApplicationHelpdeskApi.Queries.RegisterTicket;
@@ -37,6 +38,7 @@ namespace WebApplicationHelpdesk.Controllers
             };
 
             await _mediator.Send(ticketCreateCommand);
+            this.SetNotification("succes", $"Stworzono!: {ticketCreateCommand.Title}");
             return View();
         }
         public async Task <IActionResult> Index()

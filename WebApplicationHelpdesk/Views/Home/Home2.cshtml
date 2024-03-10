@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Home2";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk</title>
+    <!-- Link do najnowszej wersji Bootstrapa -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link do najnowszej wersji Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <!-- Link do najnowszej wersji Bootstrapa JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-bar {
+            background-color: #0078d4;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+            .feature img {
+                max-width: 300px; /* Zmiana rozmiaru obrazka */
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+
+        .feature-text {
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #0078d4;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Zawartość strony -->
+    <div class="feature">
+        <img src="https://assets-global.website-files.com/604659c66faae72df4449f20/62e22f0371ed515891e0db05_61dc30c673f74e711ab4010a_thumbnail%20(3).png"
+             alt="Feature Image" onclick="window.location.href='/Account/Login'">
+        <div class="feature-text">
+            <h2>Help Desk!</h2>
+        </div>
+    </div>
+
+    <!-- Stopka Bootstrapa -->
+    <footer class="footer bg-primary text-white">&copy; 2024 Help Desk</footer>
+
+</body>
+
+</html>

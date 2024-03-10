@@ -1,0 +1,31 @@
+﻿ @model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+
+<h2>Lista użytkowników</h2>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Normalized Email</th>
+            <th scope="col">ID</th>
+            <!-- Dodaj tutaj inne pola, które chcesz wyświetlić -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.NormalizedEmail</td>
+                <td>@user.Id</td>
+                <!-- Dodaj tutaj inne pola, które chcesz wyświetlić -->
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
