@@ -10,10 +10,12 @@ Aplikacja Help Desk została zaprojektowana, aby zademonstrować umiejętności 
 ## Jak korzystać
 1. Zaloguj się do konta.
 ![Strona główna](https://i.ibb.co/YXhLWFK/Zrzut-ekranu-2024-03-27-145840.png)
+
 ![Logowanie](https://i.ibb.co/pf9kfwt/Zrzut-ekranu-2024-03-27-145858.png)
 
 2.W głównym panelu administratora mamy widok twoje zgłoszenia są to dodane zgłoszenia.
 ![Widok po zalogowaniu](https://i.ibb.co/2YrrLZ8/Zrzut-ekranu-2024-03-27-145913.png)
+
 ![Zgłoszenia](https://i.ibb.co/y4h4QSb/Zrzut-ekranu-2024-03-27-145932.png)
 
 3.Widok zarejestrowanych użytkowników z numerami ID
@@ -23,7 +25,9 @@ Aplikacja Help Desk została zaprojektowana, aby zademonstrować umiejętności 
 ![Formularze rejestracyjne](https://i.ibb.co/w0DJvCB/Zrzut-ekranu-2024-03-27-145954.png)
 
 5. Użytkownicy mają nadane role
+
 ![Role](https://i.ibb.co/86rWph6/Zrzut-ekranu-2024-03-27-153255.png)
+
 ![Role użytkowników](https://i.ibb.co/MnvdxyF/Zrzut-ekranu-2024-03-27-153330.png)
 
 # Help Desk Application
